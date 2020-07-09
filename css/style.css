@@ -10126,3 +10126,7 @@ textarea.form-control {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.wide {
+    width: 15em;
+}

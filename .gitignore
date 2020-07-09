@@ -4,3 +4,4 @@ package.json
 package-lock.json
 prepros-6.config
 single.html
+mail.py
