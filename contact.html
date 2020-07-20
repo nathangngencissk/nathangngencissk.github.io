@@ -192,12 +192,12 @@
             var form = new FormData(document.getElementById('send-mail-form'));
             fetch("https://jzxl24bvqe.execute-api.us-east-1.amazonaws.com/Prod/message", {
                 method: "POST",
-                body: {
+                body: JSON.stringify({
                     name: form_name,
                     email: form_email,
                     subject: form_subject,
                     message: form_message
-                }
+                })
             });
 
         }
