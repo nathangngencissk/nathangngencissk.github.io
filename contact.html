@@ -90,18 +90,21 @@
                         </div>
                         <div class="w-100"></div>
                         <div class="col-md-6 order-md-last d-flex">
-                            <form action="#" class="bg-light p-5 contact-form">
+                            <form class="bg-light p-5 contact-form" id="send-mail-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Seu Nome" id="form_name">
+                                    <input type="text" name="name" class="form-control" placeholder="Seu Nome"
+                                        id="form_name">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Seu Email" id="form_email">
+                                    <input type="text" name="email" class="form-control" placeholder="Seu Email"
+                                        id="form_email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Assunto" id="form_subject">
+                                    <input type="text" name="subject" class="form-control" placeholder="Assunto"
+                                        id="form_subject">
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="" id="form_message" cols="30" rows="7" class="form-control"
+                                    <textarea name="message" id="form_message" cols="30" rows="7" class="form-control"
                                         placeholder="Mensagem"></textarea>
                                 </div>
                                 <div class="form-group">
@@ -177,20 +180,14 @@
     <script src="js/main.js"></script>
 
     <script>
-        function send_mail() {
+        function send_mail(evt) {
 
-            let form_name = $('#form_name').val();
-            let form_email = $('#form_email').val();
-            let form_subject = $('#form_subject').val();
-            let form_message = $('#form_message').val();
+            evt.preventDefault();
 
-            $.ajax({
-                type: "POST",
-                url: 'https://jzxl24bvqe.execute-api.us-east-1.amazonaws.com/Prod/message',
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify({ name: form_name, email: form_email, subject: form_subject, message: form_message }),
-                success: alert(`Sua mensagem foi enviada com sucesso ${form_name}!`)
+            var form = new FormData(document.getElementById('send-mail-form'));
+            fetch("https://jzxl24bvqe.execute-api.us-east-1.amazonaws.com/Prod/message", {
+                method: "POST",
+                body: form
             });
 
         }
