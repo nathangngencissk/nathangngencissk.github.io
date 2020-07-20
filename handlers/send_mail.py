@@ -6,6 +6,8 @@ import os
 
 def handle(event, context):
     print(event)
+    print(event.get('body'))
+    print(event.get('body').get('name'))
     body = json.loads(event.get('body'))
 
     name = body.get('name')

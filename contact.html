@@ -188,7 +188,9 @@
             $.ajax({
                 type: "POST",
                 url: 'https://jzxl24bvqe.execute-api.us-east-1.amazonaws.com/Prod/message',
-                data: { name: form_name, email: form_email, subject: form_subject, message: form_message },
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({ name: form_name, email: form_email, subject: form_subject, message: form_message }),
                 success: alert(`Sua mensagem foi enviada com sucesso ${form_name}!`)
             });
 
