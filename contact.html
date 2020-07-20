@@ -198,7 +198,17 @@
                     subject: form_subject,
                     message: form_message
                 })
-            });
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        alert(`Mensagem enviada com sucesso ${form_name}!`)
+                    } else {
+                        console.log('Network response was not ok.');
+                    }
+                })
+                .catch(function (error) {
+                    console.log('There has been a problem with your fetch operation: ' + error.message);
+                });
 
         }
 
