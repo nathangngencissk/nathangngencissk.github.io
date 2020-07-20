@@ -184,10 +184,20 @@
 
             evt.preventDefault();
 
+            let form_name = $('#form_name').val();
+            let form_email = $('#form_email').val();
+            let form_subject = $('#form_subject').val();
+            let form_message = $('#form_message').val();
+
             var form = new FormData(document.getElementById('send-mail-form'));
             fetch("https://jzxl24bvqe.execute-api.us-east-1.amazonaws.com/Prod/message", {
                 method: "POST",
-                body: form
+                body: {
+                    name: form_name,
+                    email: form_email,
+                    subject: form_subject,
+                    message: form_message
+                }
             });
 
         }
